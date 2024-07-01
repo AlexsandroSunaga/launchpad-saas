@@ -1,0 +1,11 @@
+node_modules/
+.next/
+web/data/
+web/prisma/*.db
+web/prisma/*.db-journal
+.env
+.env.local
+.venv/
+dist/
+__pycache__/
+web/prisma/data/
