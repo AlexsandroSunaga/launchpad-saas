@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int      @id @default(autoincrement())
+  email          String   @unique
+  passwordHash   String
+  role           String   @default("admin")
+  createdAt      DateTime @default(now())
+}
+
+model WaitlistLead {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  source    String   @default("hero")
+  campaign  String   @default("launch")
+  createdAt DateTime @default(now())
+}
+
+model Campaign {
+  id          Int      @id @default(autoincrement())
+  name        String
+  channel     String
+  status      String   @default("active")
+  budgetUsd   Int      @default(0)
+  conversions Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model ContentBlock {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  title     String
+  status    String   @default("draft")
+  updatedAt DateTime @updatedAt
+}
+
+model Experiment {
+  id        Int      @id @default(autoincrement())
+  name      String
+  variantA  String
+  variantB  String
+  winner    String?
+  status    String   @default("running")
+}
+
+model PlanTier {
+  id           Int    @id @default(autoincrement())
+  code         String @unique
+  name         String
+  priceMonthly Int
+  seats        Int
+  active       Boolean @default(true)
+}
+
+model TeamMember {
+  id     Int    @id @default(autoincrement())
+  name   String
+  email  String @unique
+  team   String
+  role   String
+}
+
+model AuditEvent {
+  id        Int      @id @default(autoincrement())
+  actor     String
+  action    String
+  target    String
+  createdAt DateTime @default(now())
+}
+
+model PageView {
+  id        Int      @id @default(autoincrement())
+  path      String
+  createdAt DateTime @default(now())
+}
