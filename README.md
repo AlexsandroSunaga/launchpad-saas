@@ -27,6 +27,15 @@ http://localhost:3010/console/login — `ops@launchpad.demo` / `LaunchPad2026!`
 | Team directory | `/console/team` |
 | Audit | `/console/audit` |
 
+## Tech stack
+
+| Area | Technologies |
+|------|--------------|
+| Frontend | `Next.js 15`, `React`, `TypeScript`, `Tailwind CSS`, `Framer Motion` |
+| Database | `Prisma ORM`, `SQLite` |
+| Payments | `Stripe` |
+| DevOps and tooling | `Vitest`, `tsx` |
+
 ## Run
 
 ```powershell
